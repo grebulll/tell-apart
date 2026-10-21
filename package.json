@@ -5,5 +5,9 @@
   "scripts": {
     "test": "vitest run"
   },
-  "packageManager": "pnpm@10.6.2"
+  "packageManager": "pnpm@10.6.2",
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
 }
