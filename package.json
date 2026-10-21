@@ -1,0 +1,9 @@
+{
+  "name": "tell-apart",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "packageManager": "pnpm@10.6.2"
+}
