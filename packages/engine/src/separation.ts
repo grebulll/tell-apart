@@ -1,8 +1,21 @@
-import { parse, filterDeficiencyProt, filterDeficiencyDeuter, filterDeficiencyTrit, clampRgb, differenceEuclidean, converter, Color } from 'culori';
+import {
+  parse,
+  filterDeficiencyProt,
+  filterDeficiencyDeuter,
+  filterDeficiencyTrit,
+  clampRgb,
+  differenceEuclidean,
+  converter,
+  Color,
+} from 'culori';
 
 export type Vision = 'protan' | 'deutan' | 'tritan';
 
-const filters: Record<Vision, ReturnType<typeof filterDeficiencyProt>> = {protan: filterDeficiencyProt(1), deutan: filterDeficiencyDeuter(1), tritan: filterDeficiencyTrit(1)}
+const filters: Record<Vision, ReturnType<typeof filterDeficiencyProt>> = {
+  protan: filterDeficiencyProt(1),
+  deutan: filterDeficiencyDeuter(1),
+  tritan: filterDeficiencyTrit(1),
+};
 
 type Row = [number, number, number];
 type Matrix = [Row, Row, Row];
@@ -30,7 +43,7 @@ const MACHADO: Record<Vision, Matrix> = {
   ],
 };
 
-const toLinear = converter('lrgb')
+const toLinear = converter('lrgb');
 const oklabDistance = differenceEuclidean('oklab');
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 
@@ -55,5 +68,7 @@ export function separation(a: string, b: string, vision: Vision): number {
   // Simulate each one with the filter for this vision type, at severity 1
   // Clamp each simulated colour with clampRgb
   // Return the OKLab distance between them, times 100
-  return oklabDistance(simulate(colorA, vision), simulate(colorB, vision)) * 100;
+  return (
+    oklabDistance(simulate(colorA, vision), simulate(colorB, vision)) * 100
+  );
 }
